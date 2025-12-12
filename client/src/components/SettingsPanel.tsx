@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { useAccessibility } from "@/contexts/AccessibilityContext";
-import { RotateCcw, Eye, Volume2, BookOpen, Accessibility } from "lucide-react";
+import { RotateCcw, Eye, Volume2, BookOpen, Accessibility, Pause } from "lucide-react";
 
 interface SettingsPanelProps {
   open: boolean;
@@ -14,7 +14,15 @@ interface SettingsPanelProps {
 }
 
 export default function SettingsPanel({ open, onOpenChange }: SettingsPanelProps) {
-  const { settings, updateSettings, resetSettings } = useAccessibility();
+  const { settings, updateSettings, resetSettings, announce } = useAccessibility();
+
+  const handleSettingChange = (settingName: string, value: boolean | number | string) => {
+    if (typeof value === "boolean") {
+      announce(`${settingName} ${value ? "enabled" : "disabled"}`);
+    } else {
+      announce(`${settingName} set to ${value}`);
+    }
+  };
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
@@ -66,7 +74,10 @@ export default function SettingsPanel({ open, onOpenChange }: SettingsPanelProps
                 <Switch
                   id="highContrast"
                   checked={settings.highContrast}
-                  onCheckedChange={(checked) => updateSettings({ highContrast: checked })}
+                  onCheckedChange={(checked) => {
+                    updateSettings({ highContrast: checked });
+                    handleSettingChange("High contrast mode", checked);
+                  }}
                   aria-label="Toggle high contrast mode"
                   data-testid="switch-high-contrast"
                 />
@@ -79,9 +90,28 @@ export default function SettingsPanel({ open, onOpenChange }: SettingsPanelProps
                 <Switch
                   id="dyslexiaFont"
                   checked={settings.dyslexiaFont}
-                  onCheckedChange={(checked) => updateSettings({ dyslexiaFont: checked })}
+                  onCheckedChange={(checked) => {
+                    updateSettings({ dyslexiaFont: checked });
+                    handleSettingChange("Dyslexia-friendly font", checked);
+                  }}
                   aria-label="Toggle dyslexia-friendly font"
                   data-testid="switch-dyslexia-font"
+                />
+              </div>
+
+              <div className="flex items-center justify-between gap-4 p-3 bg-background rounded-lg">
+                <Label htmlFor="reducedMotion" className="text-sm cursor-pointer">
+                  Reduce Motion
+                </Label>
+                <Switch
+                  id="reducedMotion"
+                  checked={settings.reducedMotion}
+                  onCheckedChange={(checked) => {
+                    updateSettings({ reducedMotion: checked });
+                    handleSettingChange("Reduced motion", checked);
+                  }}
+                  aria-label="Toggle reduced motion"
+                  data-testid="switch-reduced-motion"
                 />
               </div>
             </div>
