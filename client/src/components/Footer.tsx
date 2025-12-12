@@ -1,31 +1,31 @@
 import { Link } from "wouter";
-import { Accessibility, Mail, Github, Twitter } from "lucide-react";
+import { Sparkles, Mail, Github, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Footer() {
   return (
-    <footer className="bg-card border-t border-card-border" role="contentinfo">
-      <div className="max-w-7xl mx-auto px-6 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="bg-card/50 border-t border-card-border" role="contentinfo">
+      <div className="max-w-7xl mx-auto px-6 py-16 md:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="md:col-span-2">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary text-primary-foreground">
-                <Accessibility className="w-6 h-6" aria-hidden="true" />
+            <Link href="/" className="flex items-center gap-2.5 mb-6 group">
+              <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-chart-2 text-primary-foreground shadow-lg shadow-primary/20">
+                <Sparkles className="w-5 h-5" aria-hidden="true" />
               </div>
-              <span className="text-xl font-bold">AccessAI</span>
+              <span className="text-xl font-bold tracking-tight">AccessAI</span>
             </Link>
-            <p className="text-muted-foreground max-w-md mb-6 leading-relaxed">
+            <p className="text-muted-foreground max-w-md mb-8 leading-relaxed text-base">
               Making digital content accessible for everyone through AI-powered 
               text simplification, summarization, and image interpretation.
             </p>
             <div className="flex gap-2">
-              <Button size="icon" variant="ghost" aria-label="Email us" data-testid="button-email">
+              <Button size="icon" variant="secondary" aria-label="Email us" data-testid="button-email">
                 <Mail className="w-5 h-5" />
               </Button>
-              <Button size="icon" variant="ghost" aria-label="Visit our GitHub" data-testid="button-github">
+              <Button size="icon" variant="secondary" aria-label="Visit our GitHub" data-testid="button-github">
                 <Github className="w-5 h-5" />
               </Button>
-              <Button size="icon" variant="ghost" aria-label="Follow us on Twitter" data-testid="button-twitter">
+              <Button size="icon" variant="secondary" aria-label="Follow us on Twitter" data-testid="button-twitter">
                 <Twitter className="w-5 h-5" />
               </Button>
             </div>
@@ -74,8 +74,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-card-border mt-12 pt-8 text-center text-muted-foreground">
+        <div className="border-t border-card-border mt-16 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-muted-foreground text-sm">
           <p>&copy; {new Date().getFullYear()} GenAI Accessibility Assistant. All rights reserved.</p>
+          <p className="text-muted-foreground/70">Built with accessibility in mind</p>
         </div>
       </div>
     </footer>

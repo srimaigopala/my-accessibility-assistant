@@ -2,7 +2,8 @@ import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FileText, Image, Upload, Mic, MicOff, X } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { FileText, Image, Upload, Mic, MicOff, X, Sparkles } from "lucide-react";
 
 interface InputPanelProps {
   onTextInput: (text: string) => void;
@@ -73,16 +74,21 @@ export default function InputPanel({ onTextInput, onFileUpload, onVoiceInput }: 
   };
 
   return (
-    <Card className="h-full flex flex-col">
-      <CardHeader className="flex-shrink-0">
-        <CardTitle className="flex items-center gap-2">
-          <Upload className="w-5 h-5" aria-hidden="true" />
-          Input Content
-        </CardTitle>
+    <Card className="h-full flex flex-col border-card-border">
+      <CardHeader className="flex-shrink-0 pb-4">
+        <div className="flex items-center justify-between gap-4">
+          <CardTitle className="flex items-center gap-2.5 text-lg">
+            <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+              <Upload className="w-4 h-4 text-primary" aria-hidden="true" />
+            </div>
+            Input Content
+          </CardTitle>
+          <Badge variant="secondary" className="text-xs">Step 1</Badge>
+        </div>
       </CardHeader>
-      <CardContent className="flex-1 flex flex-col gap-6">
+      <CardContent className="flex-1 flex flex-col gap-5">
         <div className="flex-1 flex flex-col gap-3">
-          <label htmlFor="text-input" className="text-sm font-medium">
+          <label htmlFor="text-input" className="text-sm font-medium text-muted-foreground">
             Paste or type text
           </label>
           <Textarea
@@ -90,21 +96,22 @@ export default function InputPanel({ onTextInput, onFileUpload, onVoiceInput }: 
             placeholder="Enter text here to simplify, summarize, or ask questions about..."
             value={text}
             onChange={(e) => setText(e.target.value)}
-            className="flex-1 min-h-[150px] text-base resize-none"
+            className="flex-1 min-h-[120px] text-base resize-none border-2 focus:border-primary/50 transition-colors"
             data-testid="textarea-content-input"
           />
           <Button 
             onClick={handleTextSubmit} 
             disabled={!text.trim()}
-            className="w-full"
+            className="w-full shadow-lg shadow-primary/20"
             data-testid="button-submit-text"
           >
-            Process Text
+            <Sparkles className="w-4 h-4 mr-2" />
+            Process with AI
           </Button>
         </div>
 
-        <div className="border-t border-border pt-6 space-y-4">
-          <p className="text-sm font-medium">Or upload a file</p>
+        <div className="border-t border-border pt-5 space-y-4">
+          <p className="text-sm font-medium text-muted-foreground">Or upload a file</p>
           
           <div className="grid grid-cols-2 gap-3">
             <div>
@@ -119,12 +126,12 @@ export default function InputPanel({ onTextInput, onFileUpload, onVoiceInput }: 
               />
               <Button
                 variant="outline"
-                className="w-full h-24 flex-col gap-2"
+                className="w-full h-20 flex-col gap-1.5 border-2 border-dashed hover:border-primary/50 hover:bg-primary/5 transition-colors"
                 onClick={() => fileInputRef.current?.click()}
                 data-testid="button-upload-pdf"
               >
-                <FileText className="w-6 h-6" aria-hidden="true" />
-                <span>Upload PDF</span>
+                <FileText className="w-5 h-5 text-chart-4" aria-hidden="true" />
+                <span className="text-sm">PDF</span>
               </Button>
             </div>
 
@@ -140,20 +147,22 @@ export default function InputPanel({ onTextInput, onFileUpload, onVoiceInput }: 
               />
               <Button
                 variant="outline"
-                className="w-full h-24 flex-col gap-2"
+                className="w-full h-20 flex-col gap-1.5 border-2 border-dashed hover:border-chart-2/50 hover:bg-chart-2/5 transition-colors"
                 onClick={() => imageInputRef.current?.click()}
                 data-testid="button-upload-image"
               >
-                <Image className="w-6 h-6" aria-hidden="true" />
-                <span>Upload Image</span>
+                <Image className="w-5 h-5 text-chart-2" aria-hidden="true" />
+                <span className="text-sm">Image</span>
               </Button>
             </div>
           </div>
 
           {uploadedFile && (
-            <div className="flex items-center gap-2 p-3 bg-muted rounded-lg">
-              <FileText className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-              <span className="text-sm truncate flex-1">{uploadedFile.name}</span>
+            <div className="flex items-center gap-3 p-3 bg-primary/5 border border-primary/20 rounded-lg">
+              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <FileText className="w-4 h-4 text-primary" />
+              </div>
+              <span className="text-sm truncate flex-1 font-medium">{uploadedFile.name}</span>
               <Button
                 size="icon"
                 variant="ghost"
@@ -166,11 +175,11 @@ export default function InputPanel({ onTextInput, onFileUpload, onVoiceInput }: 
           )}
         </div>
 
-        <div className="border-t border-border pt-6">
-          <p className="text-sm font-medium mb-3">Or use voice input</p>
+        <div className="border-t border-border pt-5">
+          <p className="text-sm font-medium text-muted-foreground mb-3">Or use voice input</p>
           <Button
             variant={isListening ? "destructive" : "secondary"}
-            className="w-full h-14"
+            className={`w-full h-12 ${isListening ? "animate-pulse" : ""}`}
             onClick={handleVoiceToggle}
             data-testid="button-voice-input"
           >
@@ -187,9 +196,10 @@ export default function InputPanel({ onTextInput, onFileUpload, onVoiceInput }: 
             )}
           </Button>
           {isListening && (
-            <p className="text-sm text-muted-foreground text-center mt-2 animate-pulse">
-              Listening...
-            </p>
+            <div className="flex items-center justify-center gap-2 mt-3">
+              <div className="w-2 h-2 rounded-full bg-destructive animate-pulse" />
+              <p className="text-sm text-muted-foreground">Listening...</p>
+            </div>
           )}
         </div>
       </CardContent>

@@ -3,7 +3,7 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useTheme } from "@/contexts/ThemeContext";
-import { Accessibility, Menu, Moon, Sun, X } from "lucide-react";
+import { Accessibility, Menu, Moon, Sun, X, Sparkles } from "lucide-react";
 
 interface HeaderProps {
   onSettingsClick?: () => void;
@@ -21,18 +21,18 @@ export default function Header({ onSettingsClick }: HeaderProps) {
 
   return (
     <header 
-      className="sticky top-0 z-50 w-full backdrop-blur-sm bg-background/90 border-b border-border"
+      className="sticky top-0 z-50 w-full backdrop-blur-md bg-background/80 border-b border-border/50"
       role="banner"
     >
       <nav 
-        className="max-w-7xl mx-auto px-6 h-16 md:h-20 flex items-center justify-between gap-4"
+        className="max-w-7xl mx-auto px-6 h-16 md:h-18 flex items-center justify-between gap-4"
         aria-label="Main navigation"
       >
-        <Link href="/" className="flex items-center gap-2" aria-label="GenAI Accessibility Assistant Home">
-          <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary text-primary-foreground">
-            <Accessibility className="w-6 h-6" aria-hidden="true" />
+        <Link href="/" className="flex items-center gap-2.5 group" aria-label="GenAI Accessibility Assistant Home">
+          <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-chart-2 text-primary-foreground shadow-lg shadow-primary/20 transition-transform duration-300 group-hover:scale-105">
+            <Sparkles className="w-5 h-5" aria-hidden="true" />
           </div>
-          <span className="text-xl font-bold hidden sm:block">AccessAI</span>
+          <span className="text-xl font-bold hidden sm:block tracking-tight">AccessAI</span>
         </Link>
 
         <div className="hidden md:flex items-center gap-2">
