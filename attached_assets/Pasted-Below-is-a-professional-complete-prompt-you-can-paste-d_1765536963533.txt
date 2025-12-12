@@ -1,0 +1,258 @@
+Below is a **professional, complete prompt** you can paste directly into **Replit** (or any AI-powered code generator).
+It includes:
+
+✅ Clear instructions
+✅ Desired tech stack
+✅ UI/UX expectations
+✅ Full workflow & logic
+✅ Professional website structure
+✅ Accessibility-first design principles
+
+---
+
+# ✅ **PROMPT FOR REPLIT — AI ACCESSIBILITY ASSISTANT WEBSITE**
+
+**You are an expert full-stack developer and UI/UX designer.
+Create a fully responsive, professional-grade website for a “GenAI Accessibility Assistant”.
+Follow the detailed requirements, workflows, logic structures, and UI guidelines below.**
+
+---
+
+## **🎯 Project Overview**
+
+Build a web application that enables users—especially individuals with visual, cognitive, reading, or motor impairments—to upload or input digital content and receive AI-powered assistance such as:
+
+* Text simplification
+* Summarization
+* Image/screenshot interpretation
+* Voice-assisted navigation
+* Question-answering about the content
+
+---
+
+## **🧠 Core Logic & Workflow**
+
+### **1. User Inputs Content**
+
+The user can interact through any of the following:
+
+* **Paste text**
+* **Upload PDF / document file**
+* **Upload an image or screenshot**
+* **Use voice input to speak a question**
+
+---
+
+### **2. System Detects Content Type**
+
+Implement auto-detection:
+
+* If text → Show text tools
+* If PDF → Extract text via PDF parser
+* If image → Use OCR + image captioning APIs
+* If voice → Convert to text
+
+---
+
+### **3. AI Processing Pipeline**
+
+#### **A. Text Simplification**
+
+* Reduce complexity
+* Rewrite in easy reading levels (Grade 3 / Grade 6)
+
+#### **B. Document Summarization**
+
+* Provide short summary
+* Provide key points
+* Provide detailed explanation if requested
+
+#### **C. Image Interpretation**
+
+* OCR extraction
+* Generate alt-text
+* Provide full screen explanation
+* Detect layout elements (buttons, menus, icons)
+
+#### **D. Q&A Support**
+
+User asks:
+
+> “Explain this table”
+> “What does this paragraph mean?”
+> “Summarize the screen for me.”
+
+System responds contextually based on uploaded content.
+
+---
+
+### **4. Voice-Assisted Interaction**
+
+Include:
+
+* "Read aloud" feature
+* Voice-based Q&A
+* Adjustable speech rate & pitch
+
+---
+
+### **5. Personalization (Non-authenticated Local Settings)**
+
+Store in local storage:
+
+* Reading level preference
+* Font size & contrast
+* Theme mode
+* Voice speed
+
+---
+
+## **🖥️ Website Pages & Components**
+
+### **1. Landing Page**
+
+Professional and accessible. Must include:
+
+* Hero section
+* One-line value statement
+* CTA “Try the Assistant”
+* Accessibility-first navigation bar
+* Key features section
+* Demo previews
+* Footer with links
+
+---
+
+### **2. Workspace Interface (Main Tool)**
+
+A three-panel layout:
+
+#### **Left Panel: Input Options**
+
+* Text box (large, high-contrast)
+* Upload PDF button
+* Upload image button
+* Voice input button
+
+#### **Center Panel: Display/Preview**
+
+* Document preview
+* Image preview
+* Text preview
+* OCR extraction display
+
+#### **Right Panel: AI Tools / Results**
+
+Tabs:
+
+* Simplified Text
+* Summary
+* Explanation
+* Q&A Chat
+* Alt-text / Screen interpretation
+
+---
+
+### **3. Settings Panel**
+
+* Font size slider
+* Contrast mode toggle
+* Dyslexia-friendly font option
+* Voice speed & pitch
+* Language selector
+
+---
+
+## **🎨 UI/UX Design Requirements**
+
+### **Accessibility First Design**
+
+Follow WCAG 2.1 AA:
+
+* High contrast color palette
+* Large readable typography
+* Aria labels for all elements
+* Keyboard navigable UI
+* Screen-reader friendly structure
+
+### **Design Style**
+
+* Clean, professional, minimal UI
+* Soft rounded cards & containers
+* Modern color scheme (blue, purple, white, dark mode)
+* Subtle shadows & spacing
+
+### **Responsive Layout**
+
+* Fully adaptive for mobile, tablet, desktop
+* Collapsible navigation
+* Vertical toolbars for smaller screens
+
+---
+
+## **🛠️ Technical Requirements**
+
+### **Tech Stack**
+
+* **Frontend:** React + TailwindCSS
+* **Backend:** Node.js + Express
+* **AI Integration:** Replace placeholder endpoints with any LLM API
+* **OCR:** Tesseract.js (placeholder)
+* **PDF Processing:** pdf.js
+
+---
+
+## **📁 Project Structure**
+
+```
+/client
+  /src
+    components/
+    pages/
+    utils/
+    styles/
+    App.jsx
+    index.jsx
+/server
+  server.js
+  routes/
+  controllers/
+  services/
+```
+
+---
+
+## **🔐 Additional Requirements**
+
+* Clean, modular code
+* Comment each major function
+* Error handling for every upload / API call
+* Animate transitions using Framer Motion (optional)
+
+---
+
+## **🧪 Deliverables**
+
+Produce:
+
+1. Full working React/Node.js code
+2. All UI components
+3. Backend API endpoints
+4. Example AI functions with mock responses
+5. Instructions on running the project
+6. Design explanation comments
+
+---
+
+**Start building the complete application now. Write the code in an organized, production-quality format.**
+
+---
+
+If you'd like, I can also generate:
+
+✅ A logo for the product
+✅ Marketing copy for the website
+✅ A full pitch deck
+✅ UML diagrams / architecture diagrams
+
+Just tell me!
